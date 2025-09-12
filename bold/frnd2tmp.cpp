@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+template <typename T>
+class HasFriend
+{
+    private:
+        T item;
+        static int ct;
+    public:
+        HasFriend(const T & i) : item(i) { ct++; }
+        ~HasFriend() { ct--; }
+        friend void counts();
+        friend void reports(HasFriend<T> &);
+};
+
+template <typename T>
+int HasFriend<T>::ct = 0;
+
+void counts()
+{
+    cout << "int count: " << HasFriend<int>::ct << endl;
+    cout << "double count: " << HasFriend<double>::ct << endl;
+}
+void reports(HasFriend<int> & hf)
+{
+    cout << "HasFriend<int>: " << hf.item << endl;
+}
+void reports(HasFriend<double> & hf)
+{
+    cout << "HasFriend<double>: " << hf.item << endl;
+}
+int main()
+{
+    cout << "No objects declared.\n";
+    counts();
+    HasFriend<int> hfi1(10);
+    cout << "After hfi1 declared:\n";
+    counts();
+    HasFriend<int> hfi2(20);
+    cout << "After hfi2 declared:\n";
+    counts();
+    HasFriend<double> hfd1(10.5);
+    cout << "After hfd1 declared:\n";
+    counts();
+    reports(hfi1);
+    reports(hfi2);
+    reports(hfd1);
+    return 0;
+}
