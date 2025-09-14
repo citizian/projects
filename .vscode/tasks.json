@@ -9,7 +9,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/a.out"
+                "/root/a.out"
             ],
             "options": {
                 "cwd": "${fileDirname}"
