@@ -1,0 +1,14 @@
+# 忽略所有项目的 build 目录
+**/build/
+**/CMakeFiles/
+**/CMakeCache.txt
+**/Makefile
+
+# 编译产物
+*.o
+*.out
+*.exe
+*.log
+
+# 编辑器
+**/.vscode/
